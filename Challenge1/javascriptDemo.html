@@ -1,0 +1,31 @@
+
+<html>
+<head>
+</head>
+<body>
+	<script>
+		var n=5;
+		var a=sum_to_n_a(n);
+		function sum_to_n_a(n) {
+			let sum = 0;
+			for (let i = 1; i <= n; i++) {
+				sum += i;
+			}
+			return sum;
+		};
+		var b =sum_to_n_b(n);
+		function sum_to_n_b(n) {
+			return (n * (n + 1)) / 2;
+		};
+
+		var c = sum_to_n_c(n);
+		function sum_to_n_c (n) {
+			if (n === 1) return 1;  
+			return n + sum_to_n_c(n - 1);  
+		};
+		console.log(a);
+		console.log(b);
+		console.log(c);
+	</script>
+</body>
+</html>
