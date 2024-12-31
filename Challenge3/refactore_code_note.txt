@@ -1,0 +1,51 @@
+1. Inefficient use of useMemo and filter
+Problem: The useMemo hook is used to memoize the result of filtering and sorting the balances. However, the filtering and sorting logic can be computationally expensive, and memoizing it might not always be effective if the dependencies change too frequently (like balances or prices), leading to unnecessary recomputations. Additionally, the filter function logic has redundant checks, such as the check if (lhsPriority > -99) inside the filter which isn't fully optimized.
+
+Solution:
+Instead of combining filter and sort in one useMemo, consider separating them or using useMemo more effectively with a smaller set of dependencies.
+Make sure that useMemo is only used when performance matters (i.e., avoiding unnecessary recomputations on trivial changes). If balances or prices frequently change, useMemo might not help.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Incorrect check in filter method
+Problem: Inside the filter method, you check if (lhsPriority > -99), but you're using lhsPriority without verifying its context. The lhsPriority variable is undefined in this context, which could lead to unexpected behavior.
+
+Solution:
+Correct this to a valid variable (likely balancePriority), or restructure this logic to avoid filtering based on an invalid condition.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+3. Unnecessary map operation
+Problem: You are calling sortedBalances.map() twice: once to format the balances and then again to create the rows. This can lead to inefficient rendering and computation, especially if there are many balances to process.
+
+Solution:
+Combine the formatting logic with the row creation logic in one pass to avoid unnecessary iterations over the sortedBalances.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Inconsistent handling of blockchain-specific logic
+Problem: The getPriority function uses hardcoded strings for different blockchains. This can lead to potential errors in the future as the number of blockchains increases. You also use string comparison ('Osmosis', 'Ethereum', etc.), which can be more prone to bugs if the naming convention changes.
+
+Solution:
+Consider using a mapping object or enum for the blockchains to improve maintainability and scalability.
+Ensure that priorities are defined in a centralized, easy-to-modify structure.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Lack of type safety for blockchain data
+Problem: The blockchain-related data is typed as any (blockchain: any), which defeats the purpose of TypeScript's static typing. This makes the code error-prone and less maintainable.
+
+Solution:
+Define a more specific type for the blockchain object to enhance type safety.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Lack of key optimization in WalletRow component
+Problem: The key in the WalletRow is defined as index, which is an anti-pattern in React. Using the index as a key can cause issues with re-rendering and performance in lists when items change order or are added/removed. This can lead to unnecessary re-renders and loss of component state.
+
+Solution:
+Use a unique identifier (such as balance.currency or balance.blockchain) as the key in the WalletRow.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+7. Inline function in JSX
+Problem: Passing inline functions, like formattedAmount={balance.formatted}, to components can create unnecessary re-renders. Every time the component renders, the inline function is recreated, which may be avoided.
+
+Solution:
+Instead of passing inline functions in JSX, define them outside the JSX to ensure better performance.
