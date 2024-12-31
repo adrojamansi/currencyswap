@@ -1,0 +1,128 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fb;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.swap-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4A90E2;
+  outline: none;
+}
+
+.btn {
+  background-color: #4A90E2;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #357ABD;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: block;
+}
+
+
+/* ////////////////////////////////////////////// */
+
+#row {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+}
+#row input{
+  width: 50%;
+  border-radius: 8px;
+  border-bottom-right-radius: 0PX;
+  border-top-right-radius: 0PX;
+  border: 1px solid rgb(204, 204, 204);
+  border-bottom: 0px;
+  border-top: 0px;
+  border-left: 0px;
+}
+#row input:focus, #row input:focus{
+  outline: none;
+}
+#row #drodownSec{
+  width: 50%;
+}
+#row #drodownSec > div{
+  width: 100%;
+}
+#row #fromCurrency:focus, #row #fromCurrency:focus{
+  outline: none;
+  border: none !important;
+}
+#mainBox>div>div:nth-child(1){
+  padding: 0px !important;
+}
+
+#mainBox div div:nth-child(1) h4{
+  background: white !important;
+  box-shadow: none !important;
+  color: black !important;
+  font-weight: 500;
+  /* font-size: 2.125rem; */
+  font-size: 2.000rem !important;
+  margin-bottom: 20px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  height: 60px;
+  align-content: center;
+}
+
+#mainBox:nth-child(1){
+  width: 500px;
+}
+
+#mainBox form{
+  margin: 20px;
+}
+  
+  
